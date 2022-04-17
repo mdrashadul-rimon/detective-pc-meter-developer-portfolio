@@ -3,11 +3,11 @@ import React from 'react';
 const About = () => {
     return (
         <div className="md:container sm:container md:mx-auto sm:mx-auto">
-            <div className='flex items-center gap-4 my-5 mx-5'>
-                <div className="w-50 shadow-xl rounded-lg">
+            <div className='flex md:flex-row flex-col items-center gap-4 my-5 mx-5'>
+                <div className="w-auto md:order-1 order-2 shadow-xl rounded-lg">
                     <a href="https://www.linkedin.com/in/md-rashadulalam/" target="_blank"><img src="https://mdrashadul-rimon.github.io/service-images/RashadulPhoto300x300.jpg" alt="Rimons Photo" /></a>
                 </div>
-                <div className="info">
+                <div className="md:order-2">
                     <h1 className='text-3xl font-extralight mb-5'>Personal Details</h1>
                     <p className='flex flex-col gap-2'>
                         <span className='text-7xl text-lime-600 font-bold'>Rashadul Alam</span> <br />
@@ -17,9 +17,9 @@ const About = () => {
                 </div>
             </div>
 
-            <div className="text-justify">
+            <div className="mx-4">
                 <h1 className='text-3xl font-extralight my-5'>About Me</h1>
-                <p className='font-light text-lg'>
+                <p className='font-light text-lg text-justify'>
                     I'm a front-end web developer currently learning from Programming Hero
                     course conduct by Jhankar Mahbub. With recent graduation, I am seeking an
                     entry-level position in a reputed organization where my strong technical,
