@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD8BziXDdEyhV1IPWdKUA4njPOxtdn33Fw",
-    authDomain: "tech-geeks-565cc.firebaseapp.com",
-    projectId: "tech-geeks-565cc",
-    storageBucket: "tech-geeks-565cc.appspot.com",
-    messagingSenderId: "710474709993",
-    appId: "1:710474709993:web:077519a3e0f429fb752978"
+    apiKey: "AIzaSyBK190Z5VjwgNNC8GkZ341TH4eFNdLcbZM",
+    authDomain: "detective-pc-mitter.firebaseapp.com",
+    projectId: "detective-pc-mitter",
+    storageBucket: "detective-pc-mitter.appspot.com",
+    messagingSenderId: "439788241562",
+    appId: "1:439788241562:web:026030becfc74bd0121523"
 };
 
 const app = initializeApp(firebaseConfig);
