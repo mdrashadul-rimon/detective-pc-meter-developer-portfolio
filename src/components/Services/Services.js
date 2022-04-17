@@ -2,25 +2,25 @@ import { Link } from "react-router-dom";
 
 const services = [
     {
-        title: "Service-1",
-        price: 540,
+        title: "Staff Stealing",
+        price: 25500,
         image: "https://mdrashadul-rimon.github.io/service-images/staffstealing.png",
         description:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque doloremque reiciendis architecto tempore commodi perspiciatis itaque eveniet, vero fugiat autem?",
+            "A majority of employees admit to stealing from their employer at least once in their lifetime.When theft does occur, the way it's managed can also prevent future theft.",
     },
     {
-        title: "Service-2",
-        price: 780,
+        title: "Crime Investigation",
+        price: 75000,
         image: "https://mdrashadul-rimon.github.io/service-images/products.png",
         description:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque doloremque reiciendis architecto tempore commodi perspiciatis itaque eveniet, vero fugiat autem?",
+            "Criminal investigation can include searching, interviews, interrogations, evidence collection and preservation, and various methods of investigation.",
     },
     {
-        title: "Service-3",
-        price: 830,
+        title: "Divorce Matters",
+        price: 80300,
         image: "https://mdrashadul-rimon.github.io/service-images/divorced.png",
         description:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque doloremque reiciendis architecto tempore commodi perspiciatis itaque eveniet, vero fugiat autem?",
+            "Divorce is often a contentious experience in which formerly intimate spouses are now adversaries. With this dynamic, spouses may start to hide information from family.",
     },
 ];
 
@@ -32,7 +32,7 @@ const Services = () => {
             <div className="grid md:grid-cols-3 grid-cols-1 gap-4 my-8">
                 {
                     services.map((service) => (
-                        <div className="px-4 mt-6">
+                        <div className="px-4 mt-6 grid">
                             <div className="bg-white p-6 rounded-lg shadow-xl">
                                 <div className="flex justify-center">
                                     <img src={service.image} alt="Image Here" className="w-50" />
@@ -40,7 +40,7 @@ const Services = () => {
                                 <h4 className="my-2 text-gray-600 text-2xl font-semibold uppercase text-center leading-tight truncate">{service.title}</h4>
 
                                 <div className="mt-4">
-                                    <span className="text-green-600 text-3xl font-semibold">Price: ${service.price}</span>
+                                    <span className="text-green-600 text-3xl font-semibold">Fees: {service.price} TK</span>
                                 </div>
                                 <div>
                                     <span className="text-gray-800 my-2 text-sm text-justify p-2 inline-block rounded-lg tracking-wide">
