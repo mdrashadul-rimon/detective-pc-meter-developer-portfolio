@@ -34,8 +34,6 @@ const Login = () => {
         }
 
         
-
-        // setEmail(e.target.value);
     }
     const handlePasswordChange = (event) => {
         const passwordRegex = /.{6,}/;
@@ -51,10 +49,8 @@ const Login = () => {
         
     }
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-
-        console.log(userInfo)
+    const handleLogin = (event) => {
+        event.preventDefault();
 
         signInWithEmail(userInfo.email, userInfo.password);
         
@@ -89,22 +85,20 @@ const Login = () => {
 
     return (
         <div className="login-container">
-            <div className="login-title">LOGIN</div>
+            <div className="login-title">Sign In</div>
             <form className="login-form" onSubmit={handleLogin}>
-                <input type="text" placeholder="Your Email" onChange={handleEmailChange} />
+                <input type="text" placeholder="Your Email" onChange={handleEmailChange} required />
                 {errors?.email && <p className="error-message">{errors.email}</p>}
                 <input type="password" placeholder="password" onChange={handlePasswordChange} />
                 {errors?.password && <p className="error-message">{errors.password}</p> }
                 <button>Login</button>
 
-                {/* {error && <p className="error-message">{error}</p> } */}
-                {/* {hookError && <p className="error-message">{hookError?.message}</p>} */}
                 <ToastContainer />
 
-                <p>Don't have an account? <Link to="/signup">Sign up first</Link> </p>
+                <p className="py-3">Don't have an account? <Link to="/signup" className="text-blue-600">Register Now</Link> </p>
             </form>
 
-            <button onClick={() => signInWithGoogle()}>Google</button>
+            <button onClick={() => signInWithGoogle()}>Sign in with Google</button>
         </div>
     );
 };

@@ -26,7 +26,7 @@ const Nav = () => {
                         </li>
                         <li>
                             <Link
-                                to="/blog"
+                                to="/blogs"
                                 className="block py-2 px-3  border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover: dark:hover:bg-gray-700 dark:hover: md:dark:hover:bg-transparent dark:border-gray-700"
                             >
                                 Blogs
@@ -43,25 +43,33 @@ const Nav = () => {
 
                         <li>
                             <Link
-                                to="/"
+                                to="/contact"
                                 className="block py-2 px-3 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover: dark:hover:bg-gray-700 dark:hover: md:dark:hover:bg-transparent"
                             >
                                 Contact
                             </Link>
                         </li>
                         <li>
+                            <Link
+                                to="/signup"
+                                className="block py-2 px-3 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover: dark:hover:bg-gray-700 dark:hover: md:dark:hover:bg-transparent"
+                            >
+                                Sign Up
+                            </Link>
+                        </li>
+                        <li>
                             {user ? (
-                                <button onClick={() => signOut(auth)}>Logout</button>
+                                <button onClick={() => signOut(auth)} className="px-8 bg-green-500 rounded-lg hover:bg-yellow-500" >Logout {user?.email.slice(0,10)}</button>
                             ) : (
                                 <Link
                                     to="/login"
-                                    className="block py-2 px-3 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover: dark:hover:bg-gray-700 dark:hover: md:dark:hover:bg-transparent"
+                                    className="block px-8 bg-yellow-500 rounded-lg hover:bg-green-400 md:border-1 md:hover:text-black transition"
                                 >
                                     Login
                                 </Link>
                             )}
                         </li>
-                        <li>{user?.email}</li>
+                        
                     </ul>
                 </div>
             </div>

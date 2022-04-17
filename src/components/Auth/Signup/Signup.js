@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { auth } from "../../../firebase.init";
@@ -23,26 +23,24 @@ const Signup = () => {
     const [createUserWithEmailAndPassword, user, loading, hookError] =
         useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    const handleEmailChange = (e) => {
+    const handleEmailChange = (event) => {
         const emailRegex = /\S+@\S+\.\S+/;
-        const validEmail = emailRegex.test(e.target.value);
+        const validEmail = emailRegex.test(event.target.value);
 
         if (validEmail) {
-            setUserInfo({ ...userInfo, email: e.target.value });
+            setUserInfo({ ...userInfo, email: event.target.value });
             setErrors({ ...errors, email: "" });
         } else {
             setErrors({ ...errors, email: "Invalid email" });
             setUserInfo({ ...userInfo, email: "" });
         }
-
-        // setEmail(e.target.value);
     };
-    const handlePasswordChange = (e) => {
+    const handlePasswordChange = (event) => {
         const passwordRegex = /.{6,}/;
-        const validPassword = passwordRegex.test(e.target.value);
+        const validPassword = passwordRegex.test(event.target.value);
 
         if (validPassword) {
-            setUserInfo({ ...userInfo, password: e.target.value });
+            setUserInfo({ ...userInfo, password: event.target.value });
             setErrors({ ...errors, password: "" });
         } else {
             setErrors({ ...errors, password: "Minimum 6 characters!" });
@@ -50,9 +48,9 @@ const Signup = () => {
         }
     };
 
-    const handleConfirmPasswordChange = (e) => {
-        if (e.target.value === userInfo.password) {
-            setUserInfo({ ...userInfo, confirmPass: e.target.value });
+    const handleConfirmPasswordChange = (event) => {
+        if (event.target.value === userInfo.password) {
+            setUserInfo({ ...userInfo, confirmPass: event.target.value });
             setErrors({ ...errors, password: "" });
         } else {
             setErrors({ ...errors, password: "Password's don't match" });
@@ -60,8 +58,8 @@ const Signup = () => {
         }
     };
 
-    const handleLogin = (e) => {
-        e.preventDefault();
+    const handleLogin = (event) => {
+        event.preventDefault();
         console.log(userInfo);
         createUserWithEmailAndPassword(userInfo.email, userInfo.password);
     };
@@ -73,10 +71,10 @@ const Signup = () => {
                     toast("Invalid email provided, please provide a valid email");
                     break;
                 case "auth/invalid-password":
-                    toast("Wrong password. Intruder!!");
+                    toast("Wrong password");
                     break;
                 default:
-                    toast("something went wrong");
+                    toast("Try again");
             }
         }
     }, [hookError]);
@@ -95,23 +93,22 @@ const Signup = () => {
         <div className="login-container">
             <div className="login-title">Sign up</div>
             <form className="login-form" onSubmit={handleLogin}>
-                <input type="text" placeholder="Your Email" onChange={handleEmailChange} />
+                <input type="text" placeholder="Your Email" onChange={handleEmailChange} required />
                 {errors?.email && <p className="error-message">{errors.email}</p>}
                 <div className="relative">
-                    <input type={showPass ? "text" : "password"} placeholder="password" onChange={handlePasswordChange} />
+                    <input type={showPass ? "text" : "password"} placeholder="password" onChange={handlePasswordChange} required />
                     {errors?.password && <p className="error-message">{errors.password}</p>}
-                    <p className="absolute top-3 right-5" onClick={() => setShowPass(!showPass)}>🔥</p>
+                    <p className="absolute top-3 right-5" onClick={() => setShowPass(!showPass)}>Show</p>
                 </div>
                 <input
                     type="password"
                     placeholder="confirm password"
-                    onChange={handleConfirmPasswordChange}
+                    onChange={handleConfirmPasswordChange} required
                 />
+                <p className="py-3">Already have an account? <Link to="/login" className="text-blue-600">Login</Link> </p>
 
                 <button>Sign up</button>
 
-                {/* {error && <p className="error-message">{error}</p> } */}
-                {/* {hookError && <p className="error-message">{hookError?.message}</p>} */}
                 <ToastContainer />
             </form>
         </div>
