@@ -24,7 +24,7 @@ const Achievements = () => {
                     achievements.map((achievement) => (
                         <div className="grid px-4 mt-6">
                             <div className="grid p-6 justify-center items-center rounded-lg shadow-xl">
-                                <div className="flex justify-center items-center">
+                                <div className="flex justify-center items-center hover:scale-125 transition ease-linear hover:transition hover:ease-in">
                                     <img src={achievement.image} alt="Image Here" className="" />
                                 </div>
                             </div>

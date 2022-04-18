@@ -32,8 +32,8 @@ const Services = () => {
             <div className="grid md:grid-cols-3 grid-cols-1 gap-4 my-8">
                 {
                     services.map((service) => (
-                        <div className="px-4 mt-6 grid">
-                            <div className="bg-white p-6 rounded-lg shadow-xl">
+                        <div className="px-4 mt-6 grid ">
+                            <div className="bg-white p-6 hover:bg-gray-100 hover:translate-y-4 hover:transition rounded-lg shadow-xl">
                                 <div className="flex justify-center">
                                     <img src={service.image} alt="Image Here" className="w-50" />
                                 </div>
@@ -49,7 +49,7 @@ const Services = () => {
                                 </div>
                                 <div className="flex justify-center">
                                     <Link to="/checkout">
-                                        <button className="px-5 py-2 bg-slate-700 rounded font-semibold text-white hover:bg-slate-100  hover:text-gray-800 transition-colors">Proceed Checkout</button>
+                                        <button className="px-5 py-2 bg-slate-700 rounded font-semibold text-white hover:bg-slate-300  hover:text-gray-800 transition-colors">Proceed Checkout</button>
                                     </Link>
                                 </div>
                             </div>
