@@ -19,8 +19,8 @@ const ResetPass = () => {
         general: "",
     })
 
-    const [signInWithEmail, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth);
+    const [signInWithEmail, user, hookError] = useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle, googleUser, googleError] = useSignInWithGoogle(auth);
 
     const handleEmailChange = (event) => {
         const emailRegex = /\S+@\S+\.\S+/;
@@ -59,12 +59,16 @@ const ResetPass = () => {
     }, [user]);
 
     useEffect(() => {
-        const error = hookError || googleError;
+        const error = hookError || googleError || user;
         if (error) {
             switch (error?.code) {
                 case "auth/invalid-email":
                     toast("Invalid email provided, please provide a valid email");
                     break;
+                    case "auth/user-not-found":
+                    toast("User not found");
+                    // default:
+                    //     toast("Invalid email or user not found");
             }
         }
     }, [hookError, googleError])

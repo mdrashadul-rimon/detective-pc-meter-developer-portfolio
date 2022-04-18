@@ -62,7 +62,7 @@ const Signup = () => {
         if (event.target.value === userInfo.password) {
             setUserInfo({ ...userInfo, confirmPass: event.target.value });
             setErrors({ ...errors, password: "" });
-        } else {
+        }else {
             setErrors({ ...errors, password: "Password don't match" });
             setUserInfo({ ...userInfo, confirmPass: "" });
         }
@@ -71,9 +71,8 @@ const Signup = () => {
     const handleLogin = (event) => {
         event.preventDefault();
         console.log(userInfo);
-        createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+        createUserWithEmailAndPassword(userInfo.email, userInfo.password)
         toast(`Verification E-mail sent to ${userInfo.email}`);
-
     };
 
     useEffect(() => {
@@ -82,11 +81,12 @@ const Signup = () => {
                 case "auth/invalid-email":
                     toast("Invalid email provided, please provide a valid email");
                     break;
+                case "auth/email-already-exists":
+                    toast("Email already exists");
+                    break;
                 case "auth/invalid-password":
                     toast("Wrong password");
                     break;
-                default:
-                    toast("Try again");
             }
         }
     }, [hookError]);

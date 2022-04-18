@@ -1,4 +1,3 @@
-import { sendPasswordResetEmail } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -49,14 +48,6 @@ const Login = () => {
 
     }
 
-    const handlePasswordReset = () => {
-        sendPasswordResetEmail(auth, userInfo.email)
-            .then(() => {
-                console.log("Reset Email Sent");
-                toast(`Password Reset link sent to ${userInfo.email}`);
-            })
-    }
-
     const handleLogin = (event) => {
         event.preventDefault();
         signInWithEmail(userInfo.email, userInfo.password)
@@ -104,13 +95,14 @@ const Login = () => {
             </form>
 
             <Link className="pointer text-sky-500" to="/resetpass">Forget Password?</Link>
-
-            <button onClick={() => signInWithGoogle()}>
-                <div className="flex items-center justify-center gap-x-2" >
-                    <img src={GoogleLogo} alt='' />
-                    <p> Continue with Google </p>
-                </div>
-            </button>
+            <Link to="/">
+                <button onClick={() => signInWithGoogle()}>
+                    <div className="flex items-center justify-center gap-x-2" >
+                        <img src={GoogleLogo} alt='' />
+                        <p> Continue with Google </p>
+                    </div>
+                </button>
+            </Link>
         </div>
     );
 };

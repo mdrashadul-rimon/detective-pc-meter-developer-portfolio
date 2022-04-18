@@ -50,30 +50,26 @@ const Nav = () => {
                                 Contact
                             </Link>
                         </li>
-                        <li>
-                            <Link
-                                to="/signup"
-                                className="block py-2 px-3 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover: dark:hover:bg-gray-700 dark:hover: md:dark:hover:bg-transparent"
-                            >
-                                Sign Up
-                            </Link>
-                        </li>
+
                         <li>
                             {user ? (
                                 <div>
                                     <button onClick={() => signOut(auth)} className="px-8 bg-green-500 rounded-lg hover:bg-yellow-500" >Logout {user?.email.slice(0, 10)}
                                     </button>
-                                    {/* <li className='hidden'>
-                                        {toast(`Successfully Logged in as`)}
-                                    </li> */}
                                 </div>
                             ) : (
-                                <Link
-                                    to="/login"
-                                    className="block px-8 bg-yellow-500 rounded-lg hover:bg-green-400 md:border-1 md:hover:text-black transition"
-                                >
-                                    Login
-                                </Link>
+                                <div className='flex gap-2'>
+                                    <Link
+                                        to="/signup"
+                                        className="block py-2 px-3 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover: dark:hover:bg-gray-700 dark:hover: md:dark:hover:bg-transparent"
+                                    > Sign Up
+                                    </Link>
+
+                                    <Link
+                                        to="/login"
+                                        className="block px-8 bg-yellow-500 rounded-lg hover:bg-green-400 md:border-1 md:hover:text-black transition"
+                                    > Login </Link>
+                                </div>
                             )}
                         </li>
                     </ul>
