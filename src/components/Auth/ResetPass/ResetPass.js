@@ -8,8 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { auth } from "../../../firebase.init";
 import "../../../styles/Login.css";
 
-
-const Login = () => {
+const ResetPass = () => {
     const [userInfo, setUserInfo] = useState({
         email: "",
         password: "",
@@ -35,19 +34,6 @@ const Login = () => {
             setUserInfo({ ...userInfo, email: "" })
         }
     }
-    const handlePasswordChange = (event) => {
-        const passwordRegex = /.{6,}/;
-        const validPassword = passwordRegex.test(event.target.value);
-
-        if (validPassword) {
-            setUserInfo({ ...userInfo, password: event.target.value });
-            setErrors({ ...errors, password: "" });
-        } else {
-            setErrors({ ...errors, password: "Minimum 6 characters!" });
-            setUserInfo({ ...userInfo, password: "" })
-        }
-
-    }
 
     const handlePasswordReset = () => {
         sendPasswordResetEmail(auth, userInfo.email)
@@ -59,7 +45,7 @@ const Login = () => {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        signInWithEmail(userInfo.email, userInfo.password)
+        signInWithEmail(userInfo.email)
     }
 
     const navigate = useNavigate();
@@ -79,31 +65,22 @@ const Login = () => {
                 case "auth/invalid-email":
                     toast("Invalid email provided, please provide a valid email");
                     break;
-
-                case "auth/invalid-password":
-                    toast("Wrong password. Intruder!!")
-                    break;
-                default:
-                    toast("Wrong password or Email")
             }
         }
     }, [hookError, googleError])
 
     return (
         <div className="login-container">
-            <div className="login-title">Login</div>
+            <div className="login-title">Forget Password</div>
             <form className="login-form" onSubmit={handleLogin}>
                 <input type="text" placeholder="Your Email" onChange={handleEmailChange} required />
                 {errors?.email && <p className="error-message">{errors.email}</p>}
-                <input type="password" placeholder="password" onChange={handlePasswordChange} />
-                {errors?.password && <p className="error-message">{errors.password}</p>}
-                <button>Login</button>
+                <button onClick={handlePasswordReset}>Password Reset</button>
                 <ToastContainer />
 
                 <p className="py-3">Don't have an account? <Link to="/signup" className="text-blue-600">Register Now</Link> </p>
             </form>
-
-            <Link className="pointer text-sky-500" to="/resetpass">Forget Password?</Link>
+            <p className="py-3">Already have an account? <Link className="pointer text-blue-500" to="/login">Login</Link></p>
 
             <button onClick={() => signInWithGoogle()}>
                 <div className="flex items-center justify-center gap-x-2" >
@@ -115,4 +92,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default ResetPass;
