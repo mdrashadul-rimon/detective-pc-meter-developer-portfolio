@@ -1,3 +1,4 @@
+import { sendPasswordResetEmail } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -49,6 +50,13 @@ const Login = () => {
         
     }
 
+    const handlePasswordReset = () =>{
+        sendPasswordResetEmail(auth, userInfo)
+        .then(() =>{
+            console.log("Reset Email Sent");
+        })
+    }
+
     const handleLogin = (event) => {
         event.preventDefault();
 
@@ -92,6 +100,7 @@ const Login = () => {
                 <input type="password" placeholder="password" onChange={handlePasswordChange} />
                 {errors?.password && <p className="error-message">{errors.password}</p> }
                 <button>Login</button>
+                <button onClick={handlePasswordReset}>Forget Password?</button>
 
                 <ToastContainer />
 

@@ -1,3 +1,4 @@
+// import { sendEmailVerification } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -22,6 +23,15 @@ const Signup = () => {
 
     const [createUserWithEmailAndPassword, user, loading, hookError] =
         useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    // const verifyEmail = () => {
+    //     sendEmailVerification(auth.user)
+    //         .then(() => {
+    //             console.log('Email verification sent');
+    //         })
+    // }
+
+
 
     const handleEmailChange = (event) => {
         const emailRegex = /\S+@\S+\.\S+/;
@@ -62,6 +72,8 @@ const Signup = () => {
         event.preventDefault();
         console.log(userInfo);
         createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+
+
     };
 
     useEffect(() => {
