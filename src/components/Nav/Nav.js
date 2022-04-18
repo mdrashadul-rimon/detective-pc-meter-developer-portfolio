@@ -2,6 +2,7 @@ import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+// import { toast, ToastContainer } from 'react-toastify';
 import { auth } from '../../firebase.init';
 import logo from "./logo.png";
 
@@ -11,7 +12,7 @@ const Nav = () => {
     return (
         <nav className='border-gray-200 px-2 sm:px-8 py-3 sticky top-0 w-full transition-all bg-white' >
             <div className=" flex justify-between items-center">
-                <img src={logo} alt="" className='h-10'/>
+                <img src={logo} alt="" className='h-10' />
 
                 <div className="w-full md:block md:w-auto">
                     <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-lg md:font-medium">
@@ -59,7 +60,13 @@ const Nav = () => {
                         </li>
                         <li>
                             {user ? (
-                                <button onClick={() => signOut(auth)} className="px-8 bg-green-500 rounded-lg hover:bg-yellow-500" >Logout {user?.email.slice(0,10)}</button>
+                                <div>
+                                    <button onClick={() => signOut(auth)} className="px-8 bg-green-500 rounded-lg hover:bg-yellow-500" >Logout {user?.email.slice(0, 10)}
+                                    </button>
+                                    {/* <li className='hidden'>
+                                        {toast(`Successfully Logged in as`)}
+                                    </li> */}
+                                </div>
                             ) : (
                                 <Link
                                     to="/login"
@@ -69,9 +76,9 @@ const Nav = () => {
                                 </Link>
                             )}
                         </li>
-                        
                     </ul>
                 </div>
+
             </div>
         </nav>
     );

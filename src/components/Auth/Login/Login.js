@@ -32,9 +32,7 @@ const Login = () => {
         } else {
             setErrors({...errors, email: "Invalid email"})
             setUserInfo({...userInfo, email: ""})
-        }
-
-        
+        }  
     }
     const handlePasswordChange = (event) => {
         const passwordRegex = /.{6,}/;
@@ -51,16 +49,17 @@ const Login = () => {
     }
 
     const handlePasswordReset = () =>{
-        sendPasswordResetEmail(auth, userInfo)
+        sendPasswordResetEmail(auth, userInfo.email)
         .then(() =>{
             console.log("Reset Email Sent");
+            toast(`Password Reset link sent to ${userInfo.email}`);
         })
     }
 
     const handleLogin = (event) => {
         event.preventDefault();
-
         signInWithEmail(userInfo.email, userInfo.password);
+        toast(`Login Successfully as ${userInfo.email.slice(0,10)}`);
         
     }
 
@@ -86,7 +85,7 @@ const Login = () => {
                     toast("Wrong password. Intruder!!")
                     break;
                 default:
-                    toast("something went wrong")
+                    toast("Wrong password or Email")
             }
         }
     }, [hookError, googleError])
@@ -100,12 +99,12 @@ const Login = () => {
                 <input type="password" placeholder="password" onChange={handlePasswordChange} />
                 {errors?.password && <p className="error-message">{errors.password}</p> }
                 <button>Login</button>
-                <button onClick={handlePasswordReset}>Forget Password?</button>
-
                 <ToastContainer />
 
                 <p className="py-3">Don't have an account? <Link to="/signup" className="text-blue-600">Register Now</Link> </p>
             </form>
+
+            <button onClick={handlePasswordReset}>Forget Password?</button>
 
             <button onClick={() => signInWithGoogle()}>Sign in with Google</button>
         </div>

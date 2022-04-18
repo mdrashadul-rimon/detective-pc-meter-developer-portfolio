@@ -63,7 +63,7 @@ const Signup = () => {
             setUserInfo({ ...userInfo, confirmPass: event.target.value });
             setErrors({ ...errors, password: "" });
         } else {
-            setErrors({ ...errors, password: "Password's don't match" });
+            setErrors({ ...errors, password: "Password don't match" });
             setUserInfo({ ...userInfo, confirmPass: "" });
         }
     };
@@ -72,7 +72,7 @@ const Signup = () => {
         event.preventDefault();
         console.log(userInfo);
         createUserWithEmailAndPassword(userInfo.email, userInfo.password);
-
+        toast(`Verification E-mail sent to ${userInfo.email}`);
 
     };
 
