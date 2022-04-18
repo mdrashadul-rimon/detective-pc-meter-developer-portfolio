@@ -2,8 +2,9 @@
 * This website is developed for the famous detective Prodosh Chandra Mitter known as Feluda who was a fantastic and well known investigator. He has been characterized by Satyajit Roy.
 
 # Live website link
-https://detective-pc-mitter.web.app/
+# https://detective-pc-mitter.web.app/
 
+# Tools
 * Tools are used in this project:
     * React Library
     * React Tailwind Framework and Vanila CSS
