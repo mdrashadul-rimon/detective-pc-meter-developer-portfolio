@@ -1,6 +1,12 @@
 import React from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Checkout = () => {
+
+    const handleToast = () => {
+        toast("Thanks for Booking");
+    }
+
     return (
         <div className="md:container bg-gray-600">
             <div className="mx-auto">
@@ -44,13 +50,14 @@ const Checkout = () => {
 
                             <div className="p-10 pt-8">
                                 <div className="flex items-center justify-center mb-8">
-                                        <span className="font-bold">Need any help?</span>
-                                        <span className="text-grey-darker">Don't hesitate to <a href="https://facebook.com/md.ra.rimon" className="text-gray-600 underline">contact support</a>!</span>
+                                    <span className="font-bold">Need any help?</span>
+                                    <span className="text-grey-darker">Don't hesitate to <a href="https://facebook.com/md.ra.rimon" className="text-gray-600 underline">contact support</a>!</span>
                                 </div>
                             </div>
                         </form>
                         <div className='flex items-center justify-center'>
-                        <button className="bg-green-500 text-white rounded px-4 py-3 mb-6 text-lg hover:bg-green-700 transition">Confirm Checkout</button>
+                            <button onClick={handleToast} className="bg-green-500 text-white rounded px-4 py-3 mb-6 text-lg hover:bg-green-700 transition">Confirm Checkout</button>
+                            <ToastContainer />
                         </div>
                     </div>
                     <div className="panel-right w-full md:w-1/3 text-white rounded">
