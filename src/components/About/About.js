@@ -27,6 +27,12 @@ const About = () => {
                     dependable candidate successful at managing multiple priorities with a positive
                     attitude. Willingness to take on added responsibilities to meet team goals.
                 </p>
+                <p className='font-light text-lg text-justify my-2'>
+                    My goal is to meet the heighest level of front end programming. And in future I would like to develop web-3.0, solidity, blockchain and so on.
+                </p>
+                <p className='font-light text-lg text-justify'>
+                    I code 12 to 14 hours a day. some times more than 14 hours when a task has been submitted.
+                </p>
                 <h1 className='text-3xl font-extralight my-5'>Education</h1>
                 <span className='text-2xl'>B. Sc in Computer Science Engineering</span>
                 <p>Bangladesh Army University of Engineering and Technology, Qadirabad Cantonment</p>
